@@ -18,18 +18,6 @@ void print(char board[][N], const int n) {
     }
 }
 
-// void start(char board[][N], const int n) {
-//     for (int i = 0; i < n; i++) {
-//         for (int j = 0; j < n; j++) {
-//             board[i][j] = filler; // Puste pole
-//         }
-//     }
-//     for (int i = 0; i < n; i += 2) {
-//         board[0][i] = board[2][i] = board[1][i+1] = board[3][i+1] = '1';
-//         board[n-1][i+1] = board[n-3][i+1] = board[n-2][i] = board[n-4][i] = '2';
-//     }
-// }
-
 void start(char board[][N], const int n) {
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
@@ -79,32 +67,6 @@ int move(char board[][N], const int i, const int j, const int n) {
     return 0; // Ruch niemożliwy
 }
 
-// int move(char board[][N], const int i, const int j, const int n) {
-//     if (board[i][j] == '1') {
-//         if (j<n-1 && i<n-1 && board[i+1][j+1]==filler) {
-//             board[i+1][j+1] = '1';
-//         } else if (j>0 && i<n-1 && board[i+1][j-1]==filler) {
-//             board[i+1][j-1] = '1';
-//         } else {
-//             return 0;
-//         }
-//         board[i][j] = filler;
-//         return 1;
-//     } else if (board[i][j] == '2') {
-//         if (j<n-1 && i>0 && board[i-1][j+1]==filler) {
-//             board[i-1][j+1] = '2';
-//         } else if (j>0 && i>0 && board[i-1][j-1]==filler) {
-//             board[i-1][j-1] = '2';
-//         } else {
-//             return 0;
-//         }
-//         board[i][j] = filler;
-//         return 1;
-//     } else {
-//         return 0;
-//     }
-// }
-
 int capture(char board[][N], const int i, const int j, const int n) {
     if (board[i][j] == '1') { // Gracz 1
         if (i + 2 < n && j + 2 < n && board[i+1][j+1] == '2' && board[i+2][j+2] == filler) {
@@ -140,39 +102,6 @@ int capture(char board[][N], const int i, const int j, const int n) {
     return 0; // Bicie niemożliwe
 }
 
-// int capture(char board[][N], const int i, const int j, const int n) {
-//     if (board[i][j]=='1') {
-//         if (j<n-2 && i<n-2 && board[i+1][j+1]=='2' && board[i+2][j+2]==filler) {
-//             board[i+1][j+1] = filler;
-//             board[i+2][j+2] = '1';
-//         } else if (j>1 && i<n-2 && board[i+1][j-1]=='2' && board[i+2][j-2]==filler) {
-//             board[i+1][j-1] = filler;
-//             board[i+2][j-2] = '1';
-//         } else {
-//             return 0;
-//         }
-//         board[i][j] = filler;
-//         cnt[1]--;
-//         return 1;
-//     } else if (board[i][j]=='2') {
-//         if (j<n-2 && i>1 && board[i-1][j+1]=='1' && board[i-2][j+2]==filler) {
-//             board[i-1][j+1] = filler;
-//             board[i-2][j+2] = '2';
-//         } else if (j>1 && i>1 && board[i-1][j-1]=='1' && board[i-2][j-2]==filler) {
-//             board[i-1][j-1] = filler;
-//             board[i-2][j-2] = '2';
-//         } else {
-//             return 0;
-//         }
-//         board[i][j] = filler;
-//         cnt[0]--;
-//         return 1;
-//     } else {
-//         return 0;
-//     }
-// }
-
-
 int main(void) {
     char board[N][N];
     int n, steps;
@@ -201,4 +130,3 @@ int main(void) {
 
     return 0;
 }
-
